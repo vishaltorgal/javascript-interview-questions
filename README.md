@@ -266,3 +266,22 @@ console.log(b); // 5
 - Then [a, b] = [10, 5] reassigns a = 10, b = 5
 
 <br>
+
+## 9. **🧩 What is Webpack?**
+
+Webpack is a powerful module bundler for JavaScript applications.
+It takes all your files (JavaScript, CSS, images, etc.) and bundles them into optimized output files (usually one or a few .js files) that the browser can load efficiently.
+
+### ***🔧 Why Webpack is Useful***
+
+- Combines multiple JS files into one (bundling)
+
+- Converts modern JS (ES6+) to older JS (using Babel)
+
+- Supports loaders (e.g., for CSS, images, fonts)
+
+- Optimizes output (minification, tree-shaking)
+
+- Supports plugins (e.g., HTML generation, caching)
+
+- Works with frameworks like React, Vue, Angular
