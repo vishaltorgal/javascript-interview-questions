@@ -178,3 +178,91 @@ console.log(total); // 👉 15
 
 ```
 <br>
+
+## 6. **What is a Promise?**
+A Promise represents a value that may be available now, later, or never.
+
+### ***Class Component Example***
+```jsx
+const promise = new Promise((resolve, reject) => {
+  resolve('Done!');
+});
+
+promise.then(result => console.log(result)); // Done!
+```
+<br>
+
+## 7. **Destructuring**
+
+### ***✅ 1. Array Destructuring***
+```jsx
+const colors = ['red', 'green', 'blue'];
+
+const [first, second] = colors;
+
+console.log(first);  // 'red'
+console.log(second); // 'green'
+
+```
+### ***👉 You can skip items***
+```jsx
+const [ , , third] = colors;
+console.log(third); // 'blue'
+
+```
+### ***✅ 2. Object Destructuring***
+```jsx
+const user = { name: 'John', age: 30 };
+
+const { name, age } = user;
+
+console.log(name); // 'John'
+console.log(age);  // 30
+
+```
+### ***👉 Rename during destructuring:***
+```jsx
+const { name: userName } = user;
+console.log(userName); // 'John'
+
+```
+
+### ***✅ 3. Destructuring in Function Parameters***
+```jsx
+function greet({ name, age }) {
+  console.log(`Hello, ${name}! You are ${age} years old.`);
+}
+
+const person = { name: 'Alice', age: 25 };
+greet(person);
+
+```
+### ***✅ 4. Default Values***
+```jsx
+const [x = 10, y = 20] = [5];
+console.log(x); // 5
+console.log(y); // 20
+
+const { city = 'Unknown' } = { name: 'Tom' };
+console.log(city); // 'Unknown'
+```
+
+<br>
+
+## 8. **🔁 Swap Values Using Destructuring**
+
+```jsx
+let a = 5;
+let b = 10;
+
+[a, b] = [b, a];
+
+console.log(a); // 10
+console.log(b); // 5
+
+```
+### ***🔍 How it works:***
+- [b, a] creates a new array: [10, 5]
+- Then [a, b] = [10, 5] reassigns a = 10, b = 5
+
+<br>
