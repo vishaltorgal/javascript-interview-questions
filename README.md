@@ -4,6 +4,7 @@
 1. [Is JavaScript Object-Oriented?](#1-is-javascript-object-oriented)
 2. [What are closures?](#2-what-are-closures)
 3. [What is a Service Worker?](#3-what-is-a-service-worker)
+4. [Array Methods Comparison](#4-array-methods-comparison)
 
 
 
@@ -44,46 +45,16 @@ counter(); // 2
 - It remembers variables from the lexical scope, not the call stack.
 - Each closure has its own copy of the outer variables.
 - 
-## 3. **What is a service worker**
-A Service worker is basically a script (JavaScript file) that runs in the background, separate from a web page and provides features that don't need a web page or user interaction. Some of the major features of service workers are Rich offline experiences(offline first web application development), periodic background syncs, push notifications, intercept and handle network requests and programmatically managing a cache of responses.
+## 3. **What is a service worker?**
+A service worker is a background JavaScript script that runs separately from the web page and lets you control network requests, caching, and offline behavior of a web app.
 
-### ***Service worker Example***
-```jsx
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fetch API Example</title>
-</head>
-<body>
-  <h1>Random User</h1>
-  <div id="user"></div>
+***Key Characteristics***
 
-  <script>
-    // URL of the public API
-    const apiURL = 'https://randomuser.me/api/';
-
-    // Function to fetch user data
-    async function fetchUserData() {
-      try {
-        const response = await fetch(apiURL); // Make HTTP request
-        const data = await response.json();   // Parse JSON data
-        const user = data.results[0];         // Access user data
-
-        `;
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    // Call the function to fetch and display user data
-    fetchUserData();
-  </script>
-</body>
-</html>
-
-```
+- Runs in the background, not tied to a web page
+- No DOM access
+- Event driven (install, activate, fetch)
+- Works only on HTTPS (except localhost)
+- Enables offline support and PWA features
 
 ## 4. **Array Methods Comparison**
 
@@ -158,7 +129,6 @@ items.includes('x'); // false
 | **Return Value**      | A **new array**                 | An array of **removed items**       |
 | **Use Cases**         | Copy part of array              | Remove or insert items in-place     |
 
-<br>
 
 ## 5. **What is reduce()**
 
@@ -182,7 +152,7 @@ console.log(total); // 👉 15
 | 5    | 10          | 5       | 15    |
 
 ```
-<br>
+
 
 ## 6. **What is a Promise?**
 A Promise represents a value that may be available now, later, or never.
