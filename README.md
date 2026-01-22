@@ -1,3 +1,13 @@
+# JavaScript Interview Questions (2025–2026)
+
+### Table of Contents
+1. [Is JavaScript Object-Oriented?](#1-is-javascript-object-oriented)
+2. [What are closures?](#2-what-are-closures)
+3. [What is a Service Worker?](#3-what-is-a-service-worker)
+
+
+
+
 ## 1. **Is JavaScript Object-Oriented?**
 
 JavaScript is a multi-paradigm language, meaning it supports various programming styles, including 
@@ -5,40 +15,35 @@ JavaScript is a multi-paradigm language, meaning it supports various programming
  - Functional Programming (FP), 
  - and Procedural Programming.
 
-<br>
 
-## 2. **What are closures**
+## 2. **What are closures?**
 
 It is an inner function that has access to the outer or enclosing function’s variables, functions and other data even after the outer function has finished its execution. 
 
-
-Own scope where variables defined between its curly brackets
-Outer function's variables
-Global variables
-
-### Key Points
-The closure has three scope chains.
-- Own scope where variables defined between its curly brackets
-- Outer function's variables
-- Global variables
-
-
 ### ***Closures Example***
 ```jsx
-function Welcome(name) {
-  var greetingInfo = function (message) {
-    console.log(message + " " + name);
-  };
-  return greetingInfo;
+function outer() {
+  let count = 0;
+
+  function inner() {
+    count++;
+    console.log(count);
+  }
+
+  return inner;
 }
-var myFunction = Welcome("John");
-myFunction("Welcome "); //Output: Welcome John
-myFunction("Hello Mr."); //output: Hello Mr. John
+
+const counter = outer();
+counter(); // 1
+counter(); // 2
 
 ```
+***Key Points***
 
-<br>
-
+- A closure is formed automatically in JavaScript.
+- It remembers variables from the lexical scope, not the call stack.
+- Each closure has its own copy of the outer variables.
+- 
 ## 3. **What is a service worker**
 A Service worker is basically a script (JavaScript file) that runs in the background, separate from a web page and provides features that don't need a web page or user interaction. Some of the major features of service workers are Rich offline experiences(offline first web application development), periodic background syncs, push notifications, intercept and handle network requests and programmatically managing a cache of responses.
 
