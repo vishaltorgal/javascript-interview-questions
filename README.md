@@ -5,6 +5,11 @@
 2. [What are closures?](#2-what-are-closures)
 3. [What is a Service Worker?](#3-what-is-a-service-worker)
 4. [Array Methods Comparison](#4-array-methods-comparison)
+5. [slice vs splice](#5-slice-vs-splice)
+6. [What is reduce?](#6-what-is-reduce)
+7. [What is a Promise?](#7-what-is-a-promise)
+8. [Destructuring](#8-destructuring)
+9. [What is Webpack?](#9-what-is-webpack)
 
 
 
@@ -118,9 +123,9 @@ const items = ['a', 'b', 'c'];
 items.includes('b'); // true
 items.includes('x'); // false
 ```
-<br>
 
-## 5. **slice() vs splice()**
+
+## 5. **slice vs splice**
 
 | Feature               | `slice()`                       | `splice()`                          |
 | --------------------- | ------------------------------- | ----------------------------------- |
@@ -129,8 +134,18 @@ items.includes('x'); // false
 | **Return Value**      | A **new array**                 | An array of **removed items**       |
 | **Use Cases**         | Copy part of array              | Remove or insert items in-place     |
 
+### ***slice() – Copy part of an array***
+```jsx
+const items = ['a', 'b', 'c', 'd'];
+const part = items.slice(1, 3); // ['b', 'c']
+```
 
-## 5. **What is reduce()**
+### ***splice() – Remove or insert items***
+```jsx
+const items = ['a', 'b', 'c'];
+items.splice(1, 1, 'x');  // ['a', 'x', 'c'] (mutated)
+
+## 6. **What is reduce?**
 
 ```jsx
 const numbers = [1, 2, 3, 4, 5];
@@ -154,7 +169,7 @@ console.log(total); // 👉 15
 ```
 
 
-## 6. **What is a Promise?**
+## 7. **What is a Promise?**
 A Promise represents a value that may be available now, later, or never.
 
 ### ***Class Component Example***
@@ -167,7 +182,7 @@ promise.then(result => console.log(result)); // Done!
 ```
 <br>
 
-## 7. **Destructuring**
+## 8. **Destructuring**
 
 ### ***✅ 1. Array Destructuring***
 ```jsx
@@ -222,10 +237,7 @@ const { city = 'Unknown' } = { name: 'Tom' };
 console.log(city); // 'Unknown'
 ```
 
-<br>
-
-## 8. **🔁 Swap Values Using Destructuring**
-
+### ***🔁 5. Swap Values Using Destructuring***
 ```jsx
 let a = 5;
 let b = 10;
@@ -242,7 +254,7 @@ console.log(b); // 5
 
 <br>
 
-## 9. **🧩 What is Webpack?**
+## 9. **What is Webpack?**
 
 Webpack is a powerful module bundler for JavaScript applications.
 It takes all your files (JavaScript, CSS, images, etc.) and bundles them into optimized output files (usually one or a few .js files) that the browser can load efficiently.
