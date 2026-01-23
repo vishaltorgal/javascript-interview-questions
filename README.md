@@ -10,6 +10,8 @@
 7. [What is a Promise?](#7-what-is-a-promise)
 8. [Destructuring](#8-destructuring)
 9. [What is Webpack?](#9-what-is-webpack)
+10. [Hoisting](#10-hoisting)
+11. [this keyword](#11-this-keyword)
 
 
 
@@ -144,6 +146,7 @@ const part = items.slice(1, 3); // ['b', 'c']
 ```jsx
 const items = ['a', 'b', 'c'];
 items.splice(1, 1, 'x');  // ['a', 'x', 'c'] (mutated)
+```
 
 ## 6. **What is reduce?**
 
@@ -155,7 +158,7 @@ const total = numbers.reduce((accumulator, current) => {
 }, 0); // 0 is the starting value
 
 console.log(total); // 👉 15
-
+```
 ### ***🔍 How it works step-by-step:***
 
 | Step | Accumulator | Current | Total |
@@ -166,7 +169,7 @@ console.log(total); // 👉 15
 | 4    | 6           | 4       | 10    |
 | 5    | 10          | 5       | 15    |
 
-```
+
 
 
 ## 7. **What is a Promise?**
@@ -252,7 +255,7 @@ console.log(b); // 5
 - [b, a] creates a new array: [10, 5]
 - Then [a, b] = [10, 5] reassigns a = 10, b = 5
 
-<br>
+
 
 ## 9. **What is Webpack?**
 
@@ -272,3 +275,71 @@ It takes all your files (JavaScript, CSS, images, etc.) and bundles them into op
 - Supports plugins (e.g., HTML generation, caching)
 
 - Works with frameworks like React, Vue, Angular
+
+## 10. **Hoisting**
+
+Hoisting in JavaScript is a behavior where variable and function declarations are moved to the top of their scope during compilation.
+Only the declaration is hoisted, not the initialization.
+
+***var*** declarations are hoisted and initialized with undefined
+```jsx
+console.log(a); // undefined
+var a = 10;
+console.log(a); // 10
+
+```
+***What JS sees internally:***
+```jsx
+var a;
+console.log(a);
+a = 10;
+
+```
+***let and const***
+They are hoisted too, but not initialized.
+They stay in the `Temporal Dead Zone (TDZ)` until declared.
+
+
+***Function Hoisting***
+Fully hoisted. You can call them before defining.
+```jsx
+sayHello();
+
+function sayHello() {
+  console.log("Hello");
+}
+
+```
+Not fully hoisted. ***Reason:*** only var sayHi is hoisted, not the function
+```jsx
+sayHi(); // TypeError
+
+var sayHi = function () {
+  console.log("Hi");
+};
+
+```
+
+***Arrow Functions***
+```jsx
+greet(); // ReferenceError or TypeError
+
+const greet = () => {
+  console.log("Hey");
+};
+```
+## 11. **this keyword**
+this keyword is a reference to the object that is currently executing the code.
+
+```jsx
+const user = {
+  name: "Vishal",
+  greet() {
+    console.log(this.name);
+  }
+};
+
+user.greet(); // Vishal
+
+```
+## 12. **this keyword**
