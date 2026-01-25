@@ -22,17 +22,12 @@
 19. [Debouncing vs Throttling](#19-debouncing-vs-throttling)
 20. [Shallow copy vs Deep copy](#20-shallow-copy-vs-deep-copy)
 21. [Spread operator](#21-spread-operator)
-
-
-Spread operator
-Rest operator
-LocalStorage vs SessionStorage vs Cookies
-Event bubbling
-Memory leaks
-Garbage collection
-How does JS handle concurrency
-
-
+22. [Rest operator](#22-rest-operator)
+23. [LocalStorage vs SessionStorage vs Cookies](#23-localStorage-vs-sessionstorage-vs-cookies)
+24. [Event bubbling](#24-event-bubbling)
+25. [Memory leaks](#25-memory-leaks)
+26. [Garbage collection](#26-garbage-collection)
+27. [How does JS handle concurrency](#27-how-does-js-handle-concurrency)
 
 ## 1. **Is JavaScript Object-Oriented?**
 
@@ -623,3 +618,132 @@ console.log(original.address.city); // "Los Angeles" (Original stays safe)
 | Use case          | Simple objects/arrays         | Nested objects/complex structures               |
 
 ## 21. **Spread operator**
+
+The spread operator is used to expand elements of an array, object, or iterable into individual elements.
+
+✅ ***Copy an array***
+```jsx
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1];   // new copy
+
+console.log(arr2); // [1, 2, 3]
+
+```
+✅ ***Merge arrays***
+```jsx
+const a = [1, 2];
+const b = [3, 4];
+
+const merged = [...a, ...b];
+console.log(merged); // [1, 2, 3, 4]
+
+```
+
+✅ ***Add elements easily***
+```jsx
+const nums = [2, 3, 4];
+
+const newNums = [1, ...nums, 5];
+console.log(newNums); // [1, 2, 3, 4, 5]
+
+```
+
+✅ ***Copy object***
+```jsx
+const user = { name: "Vishal", age: 25 };
+
+const copy = { ...user };
+```
+
+✅ ***Merge objects***
+```jsx
+const obj1 = { a: 1 };
+const obj2 = { b: 2 };
+
+const merged = { ...obj1, ...obj2 };
+```
+
+✅ ***Override values***
+```jsx
+const user = { name: "Vishal", age: 25 };
+
+const updated = { ...user, age: 26 };
+
+console.log(updated);
+// { name: "Vishal", age: 26 }
+```
+
+## 22. **Rest operator**
+The rest operator is used to collect multiple values into a single array.
+
+✅ ***Basic example***
+```jsx
+function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+sum(1, 2, 3, 4); // 10
+
+```
+`...numbers` collects all arguments into an array.
+
+✅ ***Fixed + rest parameters***
+
+```jsx
+function greet(message, ...names) {
+  console.log(message);
+  console.log(names);
+}
+
+greet("Hello", "Vishal", "Amit", "Rahul");
+
+```
+***Output***
+```jsx
+Hello
+["Vishal", "Amit", "Rahul"]
+
+```
+
+## 23. **LocalStorage vs SessionStorage vs Cookies**
+
+| Feature                 | LocalStorage           | SessionStorage           | Cookies                    |
+| ----------------------- | ---------------------- | ------------------------ | -------------------------- |
+| Storage limit           | ~5–10 MB               | ~5 MB                    | ~4 KB                      |
+| Lifetime                | Until manually cleared | Until tab/browser closed | Has expiry time            |
+| Sent with every request | ❌ No                   | ❌ No                     | ✅ Yes                      |
+| Accessible in JS        | ✅ Yes                  | ✅ Yes                    | ✅ Yes (unless HttpOnly)    |
+| Tab specific            | ❌ No                   | ✅ Yes                    | ❌ No                       |
+| Best use case           | Persist data long-term | Temporary tab data       | Auth, server communication |
+
+1️⃣ LocalStorage
+```jsx
+localStorage.setItem("theme", "dark");
+localStorage.getItem("theme");
+localStorage.removeItem("theme");
+localStorage.clear();
+
+```
+
+2️⃣ SessionStorage
+```jsx
+sessionStorage.setItem("step", "2");
+sessionStorage.getItem("step");
+
+```
+3️⃣ Cookies
+```jsx
+//Cookie with expiry
+document.cookie = "token=abc123; expires=Fri, 31 Dec 2026 23:59:59 UTC; path=/";
+
+//Set
+document.cookie = "username=Vishal";
+
+//Retrieve
+console.log(document.cookie);
+```
+
+## 24. **Event bubbling**
+## 25. **Memory leaks**
+## 26. **Garbage collection**
+## 27. **How does JS handle concurrency**
