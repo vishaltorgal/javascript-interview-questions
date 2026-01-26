@@ -27,7 +27,7 @@
 24. [Event bubbling](#24-event-bubbling)
 25. [Memory leaks](#25-memory-leaks)
 26. [Garbage collection](#26-garbage-collection)
-27. [How does JS handle concurrency](#27-how-does-js-handle-concurrency)
+
 
 ## 1. **Is JavaScript Object-Oriented?**
 
@@ -744,6 +744,155 @@ console.log(document.cookie);
 ```
 
 ## 24. **Event bubbling**
+
+Event bubbling means
+👉 when an event happens on an element, it first runs on that element,
+👉 then moves upward through its parent elements,
+
+Think of it like a bubble rising from the bottom to the top
+
+***HTML***
+```jsx
+<div id="parent">
+  <button id="child">Click me</button>
+</div>
+
+```
+***JavaScript***
+```jsx
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+
+```
+
+```jsx
+Child clicked
+Parent clicked
+
+```
+🛑 ***Stop Event Bubbling***
+```jsx
+document.getElementById("child").addEventListener("click", (event) => {
+  event.stopPropagation();
+  console.log("Child clicked only");
+});
+```
 ## 25. **Memory leaks**
+
+Memory that is no longer needed is not released, so the app keeps using more and more RAM.
+
+***Result:***
+- App becomes slow 
+- Browser tab crashes
+- Mobile app freezes
+
+***Forgotten Event Listeners***
+```jsx
+//Problem
+button.addEventListener("click", handleClick);
+
+function handleClick() {
+  console.log("clicked");
+}
+
+//Fix
+button.removeEventListener("click", handleClick);
+```
+
+***Uncleared Timers (setInterval / setTimeout)***
+```jsx
+//Problem
+setInterval(() => {
+  console.log("running");
+}, 1000);
+
+//Fix
+const id = setInterval(() => {}, 1000);
+clearInterval(id);
+
+```
+***Global Variables***
+
+```jsx
+//Problem
+//Stored in global scope, never released.
+data = "I live forever";
+
+//Fix
+//keep variables inside functions or blocks.
+let data = "temporary data";
+
+```
+
+***Closures Holding Large Data***
+```jsx
+//Problem
+//bigData stays in memory as long as inner exists.
+function outer() {
+  const bigData = new Array(1000000);
+  return function inner() {
+    console.log(bigData.length);
+  };
+}
+
+//Fix
+bigData = null;
+```
+
+***Nullify unused references***
+```jsx
+obj = null;
+arr.length = 0;
+```
+
+
 ## 26. **Garbage collection**
-## 27. **How does JS handle concurrency**
+
+Garbage Collection (GC) is the process where JavaScript automatically frees memory that is no longer reachable or used.
+
+In simple words:
+- If JavaScript cannot reach a value anymore, it deletes it from memory.
+- You don’t manually free memory in JS. The engine does it for you.
+
+***Example***
+```jsx
+let user = {
+  name: "Vishal"
+};
+
+user = null;
+
+```
+***What happens:***
+- Object { name: "Vishal" } has no reference
+- It becomes unreachable
+- Garbage collector removes it
+
+***References Example***
+```jsx
+let a = {};
+let b = a;
+
+a = null;
+```
+
+Object is not removed because b still references it.
+
+```jsx
+b = null;
+```
+Now GC can clean it.
+
+🛡️ ***Best Practices to Help GC***
+- Remove event listeners when done
+- Clear timers
+- Avoid globals
+- Set unused objects to null
+- Be careful with closures
+- Clean up in React useEffect
+
