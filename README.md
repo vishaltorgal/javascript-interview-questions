@@ -333,15 +333,12 @@ It takes all your files (JavaScript, CSS, images, etc.) and bundles them into op
 ### ***🔧 Why Webpack is Useful***
 
 - Combines multiple JS files into one (bundling)
-
 - Converts modern JS (ES6+) to older JS (using Babel)
-
 - Supports loaders (e.g., for CSS, images, fonts)
-
-- Optimizes output (minification, tree-shaking)
-
+- Tree Shaking (removing unused code).
+- Wraps code in modules to keep it isolated.
+- Transpiles code for universal compatibility.
 - Supports plugins (e.g., HTML generation, caching)
-
 - Works with frameworks like React, Vue, Angular
 
 ## 10. **Hoisting**
