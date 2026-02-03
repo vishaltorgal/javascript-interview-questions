@@ -1127,7 +1127,7 @@ typeof true;         // "boolean"
 typeof undefined;    // "undefined"
 ```
 
-## 35. ***isArray*
+## 35. **isArray**
 
 ***Array.isArray()*** is used to check whether a value is an array or not.
 
