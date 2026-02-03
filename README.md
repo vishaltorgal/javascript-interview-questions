@@ -253,6 +253,8 @@ promise.then(result => console.log(result)); // Done!
 
 ## 8. **Destructuring**
 
+***Destructuring*** means taking values out and putting them into variables.
+
 ### ***✅ 1. Array Destructuring***
 ```jsx
 const colors = ['red', 'green', 'blue'];
