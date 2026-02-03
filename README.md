@@ -33,6 +33,9 @@
 30. [Difference between var let and const](#30-difference-between-var-let-and-const)
 31. [ES6 features](#31-es6-features)
 32. [Split](#32-split)
+33. [Join](#33-join)
+34. [typeof](#34-typeof)
+35. [isArray](#35-isArray)
 
 <br>
 
@@ -1053,7 +1056,7 @@ ES6 is ECMAScript 2015, a major JavaScript update that introduced modern feature
 
 ## 32. **Split**
 
-split() in JavaScript is used to convert a string into an array by breaking it at a given separator.
+`split()` in JavaScript is used to convert a string into an array by breaking it at a given separator.
 
 ***Syntax***
 ```jsx
@@ -1099,3 +1102,39 @@ console.log(str.split("-"));
 - It returns an array
 - Original string is not modified
 - Separator can be a string or regex
+
+## 33. **Join**
+
+***join()*** is used to convert an array into a string by joining its elements with a separator.
+
+```jsx
+const words = ["I", "love", "JavaScript"];
+
+const sentence = words.join(" ");
+
+console.log(sentence);
+// "I love JavaScript"
+```
+
+## 34. **typeof**
+
+***typeof*** is used in JavaScript to check the data type of a value or variable.
+
+```jsx
+typeof 10;           // "number"
+typeof "hello";      // "string"
+typeof true;         // "boolean"
+typeof undefined;    // "undefined"
+```
+
+## 35. ***isArray*
+
+***Array.isArray()*** is used to check whether a value is an array or not.
+
+```jsx
+Array.isArray([1, 2, 3]);   // true
+Array.isArray("hello");    // false
+Array.isArray({});         // false
+Array.isArray(null);       // false
+```
+
