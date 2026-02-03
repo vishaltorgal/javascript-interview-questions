@@ -31,6 +31,7 @@
 28. [Object Oriented Programming](#28-object-oriented-programming)
 29. [Functional Programming](#29-functional-programming)
 30. [Difference between var let and const](#30-difference-between-var-let-and-const)
+31. [ES6 features](#31-es6-features)
 
 
 ## 1. **Is JavaScript Object-Oriented?**
@@ -1017,5 +1018,15 @@ const newBalance = deposit(1000, 500);
 | Can be empty at start  | ✅ Yes                            | ✅ Yes                    | ❌ No (must be initialized) |
 | Global object binding  | Yes                              | No                       | No                         |
 | Recommended usage      | ❌ Avoid                          | ⚠️ When value changes    | ✅ Default choice           |
+
+## 31. **ES6 features**
+
+ES6 is ECMAScript 2015, a major JavaScript update that introduced modern features like - 
+- let, const
+- arrow functions
+-  classes
+-  Destructuring
+-  Spread and Rest operator
+-  template literals.
 
 
