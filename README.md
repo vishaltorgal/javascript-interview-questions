@@ -111,7 +111,7 @@ const even = nums.filter(n => n % 2 === 0); // [2, 4]
 ### ***reduce() – Collapse into one value***
 ```jsx
 const nums = [1, 2, 3];
-const sum = nums.reduce((acc, val) => acc + val, 0); // 6
+const sum = nums.reduce((accumulator, current) => accumulator + current, 0); // 6
 ```
 
 ### ***slice() – Copy part of an array***
@@ -156,9 +156,37 @@ const part = items.slice(1, 3); // ['b', 'c']
 ```
 
 ### ***splice() – Remove or insert items***
+***The Syntax***
+The method takes three main parts:
+- Start: The index where you want to begin.
+- Delete Count: How many items to remove (0 if you're just adding).
+- Items to Add: (Optional) The new elements you want to insert.
+
 ```jsx
-const items = ['a', 'b', 'c'];
-items.splice(1, 1, 'x');  // ['a', 'x', 'c'] (mutated)
+//Remove elements
+let fruits = ["apple", "banana", "cherry", "mango"];
+fruits.splice(1, 2);
+console.log(fruits);
+// ["apple", "mango"]
+
+//Add elements
+let numbers = [1, 2, 5];
+numbers.splice(2, 0, 3, 4);
+console.log(numbers);
+// [1, 2, 3, 4, 5]
+
+//Replace elements
+let colors = ["red", "green", "blue"];
+colors.splice(1, 1, "yellow");
+console.log(colors);
+// ["red", "yellow", "blue"]
+
+//Remove from middle and insert
+let arr = ["a", "b", "c", "d"];
+arr.splice(1, 2, "x", "y");
+console.log(arr);
+// ["a", "x", "y", "d"]
+
 ```
 
 ## 6. **What is reduce?**
