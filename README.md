@@ -32,6 +32,7 @@
 29. [Functional Programming](#29-functional-programming)
 30. [Difference between var let and const](#30-difference-between-var-let-and-const)
 31. [ES6 features](#31-es6-features)
+32. [Split](#32-split)
 
 
 ## 1. **Is JavaScript Object-Oriented?**
@@ -1029,4 +1030,51 @@ ES6 is ECMAScript 2015, a major JavaScript update that introduced modern feature
 -  Spread and Rest operator
 -  template literals.
 
+## 32. **Split**
 
+split() in JavaScript is used to convert a string into an array by breaking it at a given separator.
+
+***Syntax***
+```jsx
+string.split(separator, limit)
+```
+***Split by space***
+```jsx
+let text = "I love JavaScript";
+
+let result = text.split(" ");
+
+console.log(result);
+// ["I", "love", "JavaScript"]
+
+```
+***Split each character***
+```jsx
+let word = "hello";
+
+console.log(word.split(""));
+// ["h", "e", "l", "l", "o"]
+
+```
+
+***Using limit***
+```jsx
+let str = "one two three four";
+
+console.log(str.split(" ", 2));
+// ["one", "two"]
+
+```
+***Split using regex***
+```jsx
+let str = "2026-02-03";
+
+console.log(str.split("-"));
+// ["2026", "02", "03"]
+
+```
+
+- split() works only on strings
+- It returns an array
+- Original string is not modified
+- Separator can be a string or regex
