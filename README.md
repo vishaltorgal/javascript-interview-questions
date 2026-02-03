@@ -64,7 +64,7 @@ counter(); // 2
 - A closure is formed automatically in JavaScript.
 - It remembers variables from the lexical scope, not the call stack.
 - Each closure has its own copy of the outer variables.
-- 
+  
 ## 3. **What is a service worker?**
 A service worker is a background JavaScript script that runs separately from the web page and lets you control network requests, caching, and offline behavior of a web app.
 
@@ -573,7 +573,7 @@ Ordering food 🍔
 - Then choose item
 - Instead of ordering everything at once.
 
-## 19. **Currying**
+## 19. **Debouncing vs Throttling**
 
 Both Debouncing and Throttling are techniques used to improve browser performance by limiting how many times a function executes over time.
 
