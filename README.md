@@ -440,7 +440,10 @@ Promise
 Timeout
 
 ```
-The Event Loop continuously checks the call stack and executes synchronous code first, then microtasks, and finally macrotasks, enabling asynchronous behavior in JavaScript.
+The Event Loop continuously checks the call stack and executes 
+- synchronous code first,
+- then microtasks, and
+- finally macrotasks, enabling asynchronous behavior in JavaScript.
 
 ***What happens step by step***
 - "Start" → Call Stack → executed
