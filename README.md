@@ -34,6 +34,7 @@
 31. [ES6 features](#31-es6-features)
 32. [Split](#32-split)
 
+<br>
 
 ## 1. **Is JavaScript Object-Oriented?**
 
@@ -42,6 +43,7 @@ JavaScript is a multi-paradigm language, meaning it supports various programming
  - Functional Programming (FP), 
  - and Procedural Programming.
 
+<br>
 
 ## 2. **What are closures?**
 
@@ -150,6 +152,7 @@ items.includes('b'); // true
 items.includes('x'); // false
 ```
 
+<br>
 
 ## 5. **slice vs splice**
 
@@ -197,8 +200,8 @@ let arr = ["a", "b", "c", "d"];
 arr.splice(1, 2, "x", "y");
 console.log(arr);
 // ["a", "x", "y", "d"]
-
 ```
+<br>
 
 ## 6. **What is reduce?**
 
@@ -222,10 +225,21 @@ console.log(total); // 👉 15
 | 5    | 10          | 5       | 15    |
 
 
-
+<br>
 
 ## 7. **What is a Promise?**
-A Promise represents a value that may be available now, later, or never.
+A Promise is an object representing the eventual completion (or failure) of an ***asynchronous operation*** and its resulting value.
+
+
+***Think of it like ordering a pizza.***
+
+`The Promise`: When you place the order, the shop gives you a receipt (the Promise).
+
+`Pending`: The pizza is being made. You don't have the pizza yet, but you have the guarantee you'll get it.
+
+Settled:
+`Fulfilled`: The delivery driver arrives with your pizza. Success!
+`Rejected`: The shop calls to say they ran out of dough. Failure.
 
 ### ***Class Component Example***
 ```jsx
