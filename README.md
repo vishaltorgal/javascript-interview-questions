@@ -72,7 +72,7 @@ counter(); // 2
 - Each closure has its own copy of the outer variables.
   
 ## 3. **What is a service worker?**
-A service worker is a background JavaScript script that runs separately from the web page and lets you control network requests, caching, and offline behavior of a web app.
+A ***Service Worker*** is essentially a script that your browser runs in the background, separate from a web page. Think of it as a middleman or a proxy that sits between your web browser and the network (the internet).
 
 ***Key Characteristics***
 
@@ -80,7 +80,9 @@ A service worker is a background JavaScript script that runs separately from the
 - No DOM access
 - Event driven (install, activate, fetch)
 - Works only on HTTPS (except localhost)
-- Enables offline support and PWA features
+- Caching and Offline Support
+- Push Notifications
+  
 
 ## 4. **Array Methods Comparison**
 
