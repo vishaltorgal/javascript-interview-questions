@@ -27,6 +27,9 @@
 24. [Event bubbling](#24-event-bubbling)
 25. [Memory leaks](#25-memory-leaks)
 26. [Garbage collection](#26-garbage-collection)
+27. [Procedural Programming](#27-procedural-programming)
+28. [Object Oriented Programming](#28-object-oriented-programming)
+29. [Functional Programming](#29-functional-programming)
 
 
 ## 1. **Is JavaScript Object-Oriented?**
@@ -924,3 +927,77 @@ Now GC can clean it.
 - Be careful with closures
 - Clean up in React useEffect
 
+
+## 27. **Procedural Programming**
+
+- Program is a sequence of procedures or functions
+- Data and functions are separate
+
+```jsx
+let balance = 1000;
+
+function deposit(amount) {
+  balance += amount;
+}
+
+function withdraw(amount) {
+  balance -= amount;
+}
+```
+
+***Pros***
+- Simple and easy to understand
+- Good for small programs
+
+***Cons***
+- Hard to manage large codebases
+- Data can be modified from anywhere
+
+## 28. **Object Oriented Programming**
+
+- Code is organized around objects
+- Uses concepts like encapsulation, inheritance, polymorphism, abstraction
+
+```jsx
+class BankAccount {
+  constructor(balance) {
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    this.balance += amount;
+  }
+}
+
+```
+
+***Pros***
+- Better structure for large applications
+- Easy to maintain and extend
+- Models real world entities well
+
+***Cons***
+- Can be overkill for small tasks
+- Slightly more complex
+
+## 29. **Functional Programming**
+
+- Functions are pure no side effects
+- Data is immutable
+- Uses higher order functions
+
+```jsx
+const deposit = (balance, amount) => balance + amount;
+
+const newBalance = deposit(1000, 500);
+
+```
+
+***Pros***
+- Easier to test and debug
+- Fewer bugs due to immutability
+- Works well with parallel code
+
+***Cons***
+- Learning curve
+- Can feel unnatural at first
