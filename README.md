@@ -72,6 +72,7 @@ counter(); // 2
 - Each closure has its own copy of the outer variables.
 
 <br>
+
 ## 3. **What is a service worker?**
 A ***Service Worker*** is essentially a script that your browser runs in the background, separate from a web page. Think of it as a middleman or a proxy that sits between your web browser and the network (the internet).
 
@@ -85,6 +86,7 @@ A ***Service Worker*** is essentially a script that your browser runs in the bac
 - Push Notifications
   
 <br>
+
 ## 4. **Array Methods Comparison**
 
 | Method       | Description                                             | Mutates Original Array? | Return Value               | Use Case                  |
