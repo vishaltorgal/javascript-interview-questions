@@ -238,8 +238,8 @@ A Promise is an object representing the eventual completion (or failure) of an *
 `Pending`: The pizza is being made. You don't have the pizza yet, but you have the guarantee you'll get it.
 
 Settled:
-`Fulfilled`: The delivery driver arrives with your pizza. Success!
-`Rejected`: The shop calls to say they ran out of dough. Failure.
+- `Fulfilled`: The delivery driver arrives with your pizza. Success!
+- `Rejected`: The shop calls to say they ran out of dough. Failure.
 
 ### ***Class Component Example***
 ```jsx
