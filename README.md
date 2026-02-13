@@ -36,6 +36,7 @@
 33. [Join](#33-join)
 34. [typeof](#34-typeof)
 35. [isArray](#35-isArray)
+36. [DOM](#36-dom)
 
 <br>
 
@@ -1138,3 +1139,30 @@ Array.isArray({});         // false
 Array.isArray(null);       // false
 ```
 
+## 35. **DOM**
+DOM stands for Document Object Model.
+
+It is a programming interface that represents an HTML or XML document as a tree structure of objects, so JavaScript can access and modify it.
+
+🧠 Simple Definition
+- 👉 DOM = A structured representation of your HTML page
+- 👉 It allows JavaScript to read, change, add, or delete elements
+
+***Browser converts the HTML into a tree structure like this:***
+
+```jsx
+Document
+  └── html
+       └── body
+            ├── h1
+            └── button
+```
+Each element becomes a node (object).
+
+🔥 What You Can Do with DOM
+
+- ✔ Change text
+- ✔ Change styles
+- ✔ Add elements
+- ✔ Remove elements
+- ✔ Handle events like click
