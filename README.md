@@ -37,6 +37,7 @@
 34. [typeof](#34-typeof)
 35. [isArray](#35-isArray)
 36. [DOM](#36-dom)
+37. [Callback Hell](#37-callback-hell)
 
 <br>
 
@@ -1139,7 +1140,7 @@ Array.isArray({});         // false
 Array.isArray(null);       // false
 ```
 
-## 35. **DOM**
+## 36. **DOM**
 DOM stands for Document Object Model.
 
 It is a programming interface that represents an HTML or XML document as a tree structure of objects, so JavaScript can access and modify it.
@@ -1166,3 +1167,47 @@ Each element becomes a node (object).
 - ✔ Add elements
 - ✔ Remove elements
 - ✔ Handle events like click
+
+<br>
+
+## 37. Callback Hell
+
+Callback Hell is a situation in JavaScript where multiple asynchronous operations are nested inside one another using callbacks, resulting in deeply indented and hard-to-read code.
+
+❌ Example Structure of Callback Hell
+```jsx
+doSomething(function(result1) {
+  doSomethingElse(result1, function(result2) {
+    doAnotherThing(result2, function(result3) {
+      console.log(result3);
+    });
+  });
+});
+```
+This nested structure is often called the:
+- 👉 Pyramid of Doom
+
+### ✅ Modern Solutions
+
+1️⃣ Promises
+```jsx
+getUser()
+  .then(user => getOrders(user.id))
+  .then(orders => getOrderDetails(orders[0].id))
+  .then(details => console.log(details))
+  .catch(error => console.error(error));
+```
+
+2️⃣ Async / Await (Best Way)
+```jsx
+async function fetchData() {
+  try {
+    const user = await getUser();
+    const orders = await getOrders(user.id);
+    const details = await getOrderDetails(orders[0].id);
+    console.log(details);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
