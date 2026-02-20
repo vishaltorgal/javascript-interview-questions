@@ -52,7 +52,7 @@ JavaScript is a multi-paradigm language, meaning it supports various programming
 
 ## 2. **What are closures?**
 
-It is an inner function that has access to the outer or enclosing function’s variables, functions and other data even after the outer function has finished its execution. 
+A closure lets a function access variables from its parent function even after the parent function is done.
 
 ### ***Closures Example***
 ```jsx
@@ -81,7 +81,39 @@ counter(); // 2
 <br>
 
 ## 3. **What is a service worker?**
-A ***Service Worker*** is essentially a script that your browser runs in the background, separate from a web page. Think of it as a middleman or a proxy that sits between your web browser and the network (the internet).
+A ***Service Worker*** is essentially a script that your browser runs in the background, separate from a web page. 
+
+Think of it as a middleman or a proxy that sits between your web browser and the network (the internet).
+
+```jsx
+Browser
+   ↓
+Service Worker
+   ↓
+Network (API / Server)
+```
+
+### When your app makes a request:
+
+Service Worker can:
+- Serve cached data
+- Fetch fresh data
+- Combine both
+- Modify response
+
+
+### Where It Runs
+
+- Runs in a separate thread
+
+`No direct access to:`
+- DOM
+- window
+
+`Can access:`
+- Cache API
+- Fetch API
+- IndexedDB
 
 ***Key Characteristics***
 
@@ -91,6 +123,21 @@ A ***Service Worker*** is essentially a script that your browser runs in the bac
 - Works only on HTTPS (except localhost)
 - Caching and Offline Support
 - Push Notifications
+
+### Push Notifications
+
+Used for:
+- WhatsApp Web
+- Gmail
+- News apps
+
+Push works even when the tab is closed.
+
+### 🔹 Lifecycle of Service Worker
+- Register
+- Install
+- Activate
+- Fetch
   
 <br>
 
@@ -233,8 +280,32 @@ console.log(total); // 👉 15
 <br>
 
 ## 7. **What is a Promise?**
-A Promise is an object representing the eventual completion (or failure) of an ***asynchronous operation*** and its resulting value.
+A Promise is an object that represents the future result of an asynchronous operation.
 
+`It is a way to handle:`
+
+- API calls
+- Timers
+- File reading
+- Database queries
+- Any async operation
+
+### 🔹 Why We Need Promises
+
+JavaScript is single-threaded.
+
+When something takes time (like an API call), JavaScript does not block the main thread. Instead, it uses promises to handle the result later.
+
+
+### 🔹 Promise States
+
+A Promise has 3 states:
+
+- Pending → Still waiting
+- Fulfilled → Operation successful
+- Rejected → Operation failed
+
+Once fulfilled or rejected, it becomes settled.
 
 ***Think of it like ordering a pizza.***
 
@@ -246,13 +317,25 @@ Settled:
 - `Fulfilled`: The delivery driver arrives with your pizza. Success!
 - `Rejected`: The shop calls to say they ran out of dough. Failure.
 
-### ***Class Component Example***
+### 🔹 Basic Example
 ```jsx
-const promise = new Promise((resolve, reject) => {
-  resolve('Done!');
-});
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
 
-promise.then(result => console.log(result)); // Done!
+  if (success) {
+    resolve("Operation Successful");
+  } else {
+    reject("Operation Failed");
+  }
+});
+```
+
+### ***Real World Example (API Call)***
+```jsx
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
 ```
 <br>
 
@@ -332,20 +415,77 @@ console.log(b); // 5
 
 ## 9. **What is Webpack?**
 
-Webpack is a powerful module bundler for JavaScript applications.
-It takes all your files (JavaScript, CSS, images, etc.) and bundles them into optimized output files (usually one or a few .js files) that the browser can load efficiently.
+`Modern apps use:`
 
-### ***🔧 Why Webpack is Useful***
+- Many JS files
+- CSS files
+- Images
+- Fonts
+- TypeScript
+- JSX
 
-- Combines multiple JS files into one (bundling)
-- Converts modern JS (ES6+) to older JS (using Babel)
-- Supports loaders (e.g., for CSS, images, fonts)
-- Tree Shaking (removing unused code).
-- Wraps code in modules to keep it isolated.
-- Transpiles code for universal compatibility.
-- Supports plugins (e.g., HTML generation, caching)
+`Browsers cannot understand:`
+
+- JSX
+- TypeScript
+- ES Modules directly in older environments
+
+Webpack solves this.
+
+### 🔥 What Webpack Does
+
+1️⃣ Bundling - Combines
+```jsx
+App.js
+Header.js
+Footer.js
+utils.js
+```
+Into:
+```jsx
+bundle.js
+```
+
+2️⃣ Transpiling (via Babel) 
+- Converts Into older JS compatible with all browsers.
+- Transpiling = Modern JavaScript ➜ Older JavaScript
+- So that older browsers can understand it.
+  
+Modern
+```jsx
+const add = (a, b) => a + b;
+```
+After transpiling, it becomes:
+```jsx
+var add = function(a, b) {
+  return a + b;
+};
+```
+
+3️⃣ Code Splitting
+Loads only required code when needed.
+
+`Example:`
+- Login page loads login bundle
+- Dashboard loads dashboard bundle
+- Improves performance.
+
+4️⃣ Asset Handling
+`Webpack can bundle:`
+
+- CSS
+- SCSS
+- Images
+- Fonts
+
+5️⃣ Optimization
+`For production it:`
+
+- Minifies code
+- Removes unused code (tree shaking)
+- Compresses files
 - Works with frameworks like React, Vue, Angular
-
+  
 ## 10. **Hoisting**
 
 Hoisting in JavaScript is a behavior where variable and function declarations are moved to the top of their scope during compilation.
@@ -420,44 +560,31 @@ user.greet();
 ```
 ## 12. **Event Loop**
 
-The Event Loop allows JavaScript to perform non-blocking asynchronous operations even though JS is single-threaded.
+The event loop is an important concept in JavaScript that enables asynchronous programming by handling tasks efficiently.
+
+Since JavaScript is single-threaded, it uses the event loop to manage the execution of multiple tasks without blocking the main thread.
 
 ***Example***
 ```jsx
-console.log("Start");
+console.log("Start"); // 1. Logged immediately
 
 setTimeout(() => {
-  console.log("Timeout");
+  console.log("Timeout"); // 4. Logged last (Task Queue)
 }, 0);
 
 Promise.resolve().then(() => {
-  console.log("Promise");
+  console.log("Promise"); // 3. Logged after sync code (Microtask Queue)
 });
 
-console.log("End");
-
+console.log("End"); // 2. Logged immediately
 ```
-***Output***
-```jsx
-Start
-End
-Promise
-Timeout
 
-```
-The Event Loop continuously checks the call stack and executes 
-- synchronous code first,
-- then microtasks, and
-- finally macrotasks, enabling asynchronous behavior in JavaScript.
+### The Execution Order (Simplified)
 
-***What happens step by step***
-- "Start" → Call Stack → executed
-- setTimeout → Web API → Macrotask Queue
-- Promise.then → Microtask Queue
-- "End" → Call Stack → executed
-- Call Stack empty
-- Event Loop runs all Microtasks
-- Then runs one Macrotask
+- Execute synchronous code in the Call Stack.
+- Check the Microtask Queue (Promises). Run all of them until the queue is empty.
+- Check the Callback Queue (setTimeout, events). Take the first one and push it to the stack.
+- Repeat.
 
 ## 13. **Call Stack**
 
@@ -486,6 +613,23 @@ greet();
 Hi!
 Back in greet
 ```
+
+***Stack Overflow***
+
+This happens when you have a function that calls itself (recursion) without a base case to stop it. The stack keeps growing until it exceeds the browser's memory limit.
+
+```jsx
+function chicken() {
+  return egg();
+}
+
+function egg() {
+  return chicken();
+}
+
+chicken(); // Uncaught RangeError: Maximum call stack size exceeded
+```
+
 
 ## 14. **Synchronous vs Asynchronous**
 
