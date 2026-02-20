@@ -1355,3 +1355,28 @@ async function fetchData() {
   }
 }
 ```
+
+## 38. Event Delegation
+
+Event delegation is a technique where we attach one event listener to a parent element to handle events for its children.
+
+```jsx
+document.getElementById("parent").addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    console.log("Button clicked");
+  }
+});
+```
+### Why Use It?
+`Memory Efficiency`: One listener uses much less memory than 1,000 listeners.
+
+`Dynamic Elements` : If you add new child elements via JavaScript after the page has loaded, they automatically "inherit" the click functionality because the parent is already listening.
+
+### Event Bubbling vs Event Delegation        
+
+| Event Bubbling     | Event Delegation                     |
+| ------------------ | ------------------------------------ |
+| Browser behavior   | Developer technique                  |
+| Automatic          | Intentional                          |
+| Event moves upward | We use parent to handle child events |
+
