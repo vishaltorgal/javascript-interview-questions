@@ -38,6 +38,7 @@
 35. [isArray](#35-isArray)
 36. [DOM](#36-dom)
 37. [Callback Hell](#37-callback-hell)
+38. [Event Delegation](#38-event-delegation)
 
 <br>
 
