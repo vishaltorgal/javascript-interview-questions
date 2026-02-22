@@ -39,6 +39,7 @@
 36. [DOM](#36-dom)
 37. [Callback Hell](#37-callback-hell)
 38. [Event Delegation](#38-event-delegation)
+39. [Difference between async and defer](#39-difference-between-async-and-defer)
 
 <br>
 
@@ -1381,3 +1382,50 @@ document.getElementById("parent").addEventListener("click", (e) => {
 | Automatic          | Intentional                          |
 | Event moves upward | We use parent to handle child events |
 
+
+## 39. Difference between async and defer
+
+Both are used in HTML <script> tag to control how JS files load.
+
+### 🚀 1️⃣ async
+
+- Script downloads in background
+- When download finishes → executes immediately
+- HTML parsing pauses during execution
+
+`Important:`
+- Execution order is NOT guaranteed.
+
+If you have:
+```jsx
+<script async src="a.js"></script>
+<script async src="b.js"></script>
+```
+
+b.js may execute before a.js.
+
+
+### 🚀 2️⃣ defer
+
+- Script downloads in background
+- Executes only after HTML parsing is complete
+- Execution order is preserved
+
+If you have:
+```jsx
+<script defer src="a.js"></script>
+<script defer src="b.js"></script>
+```
+
+They execute in correct order:
+- a.js → then b.js
+
+### 📊 Quick Comparison
+
+| Feature                    | async                  | defer             |
+| -------------------------- | ---------------------- | ----------------- |
+| Blocks HTML parsing        | No (while downloading) | No                |
+| Blocks during execution    | Yes                    | Yes               |
+| Execution order guaranteed | No                     | Yes               |
+| Runs after HTML parsing    | Not necessarily        | Yes               |
+| Good for                   | Independent scripts    | Dependent scripts |
