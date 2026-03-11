@@ -579,6 +579,11 @@ Handle User Events (click, typing)
 ↓
 Render / Paint UI
 ```
+This cycle happens many times per second, so the UI feels responsive.
+
+***When UX can get blocked***
+
+If JavaScript runs a long synchronous task, the browser cannot process user events until it finishes.
 
 ***Example***
 ```jsx
