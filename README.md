@@ -239,7 +239,7 @@ console.log(fruits);
 
 //Add elements
 let numbers = [1, 2, 5];
-numbers.splice(2, 0, 3, 4);
+numbers.splice(2, 0, 3, 4); //numbers.splice(start, deleteCount, item1, item2, ...)
 console.log(numbers);
 // [1, 2, 3, 4, 5]
 
