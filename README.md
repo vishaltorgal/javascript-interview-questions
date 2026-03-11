@@ -566,6 +566,20 @@ The event loop is an important concept in JavaScript that enables asynchronous p
 
 Since JavaScript is single-threaded, it uses the event loop to manage the execution of multiple tasks without blocking the main thread.
 
+<img width="800" height="401" alt="image" src="https://github.com/user-attachments/assets/4d4a06e3-7f18-4aa9-9517-ca04416bdd67" />
+
+### Flow
+
+```jsx
+Run JS (Call Stack)
+↓
+Run Microtasks (Promises)
+↓
+Handle User Events (click, typing)
+↓
+Render / Paint UI
+```
+
 ***Example***
 ```jsx
 console.log("Start"); // 1. Logged immediately
