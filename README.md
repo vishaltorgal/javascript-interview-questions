@@ -40,6 +40,7 @@
 37. [Callback Hell](#37-callback-hell)
 38. [Event Delegation](#38-event-delegation)
 39. [Difference between async and defer](#39-difference-between-async-and-defer)
+40. [Generator](#40-generator)
 
 <br>
 
@@ -1448,3 +1449,88 @@ They execute in correct order:
 | Execution order guaranteed | No                     | Yes               |
 | Runs after HTML parsing    | Not necessarily        | Yes               |
 | Good for                   | Independent scripts    | Dependent scripts |
+
+## 40. Generator
+
+A generator is a special function in JavaScript that can pause its execution using yield and resume later, producing a sequence of values.
+
+### Calling a Generator
+Generators do not execute immediately.
+
+```jsx
+function* numbers() {
+  yield 10;
+  yield 20;
+  yield 30;
+}
+
+const gen = numbers();
+
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+```
+
+***Output:***
+
+```jsx
+{ value: 10, done: false }
+{ value: 20, done: false }
+{ value: 30, done: false }
+{ value: undefined, done: true }
+```
+***Explanation***
+
+| Property | Meaning                    |
+| -------- | -------------------------- |
+| value    | returned value             |
+| done     | whether generator finished |
+
+
+### Example
+
+***Step 1: Create Generator***
+```jsx
+function* itemGenerator(items) {
+  for (let item of items) {
+    yield item;
+  }
+}
+```
+This generator will return one item at a time.
+
+***Step 2: Use in React Component***
+```jsx
+import { useRef, useState } from "react";
+
+function ItemViewer() {
+  const items = ["Apple", "Banana", "Orange", "Mango"];
+
+  const generatorRef = useRef(itemGenerator(items));
+  const [currentItem, setCurrentItem] = useState("");
+
+  const showNext = () => {
+    const next = generatorRef.current.next();
+    if (!next.done) {
+      setCurrentItem(next.value);
+    }
+  };
+
+  return (
+    <div>
+      <h2>{currentItem}</h2>
+      <button onClick={showNext}>Next Item</button>
+    </div>
+  );
+}
+
+export default ItemViewer;
+```
+***Example output:***
+```jsx
+Click 1 → Apple
+Click 2 → Banana
+Click 3 → Orange
+Click 4 → Mango
+```
