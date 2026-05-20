@@ -214,9 +214,10 @@ items.includes('x'); // false
 | Feature               | `slice()`                       | `splice()`                          |
 | --------------------- | ------------------------------- | ----------------------------------- |
 | **Purpose**           | Extracts a portion of an array  | Adds, removes, or replaces elements |
-| **Mutates original?** | ❌ No (does NOT change original) | ✅ Yes (CHANGES original)            |
+| **Mutates original?** | ❌ No (does NOT change original) | ✅ Yes (CHANGES original)         |
 | **Return Value**      | A **new array**                 | An array of **removed items**       |
 | **Use Cases**         | Copy part of array              | Remove or insert items in-place     |
+| **Syntax**         | array.slice(startIndex, endIndex)  | splice(startIndex, deleteCount, newItems) |
 
 ### ***slice() – Copy part of an array***
 ```jsx
@@ -234,10 +235,9 @@ The method takes three main parts:
 ```jsx
 //Remove elements
 //splice(startIndex, deleteCount, newItems) Note: Third parameter is optional
-let fruits = ["apple", "banana", "cherry", "mango"];
-fruits.splice(1, 2); // Start from index 1 and Remove 2 items
-console.log(fruits);
-// ["apple", "mango"]
+let items2  = ['a', 'b', 'c', 'd', 'e'];
+items2.splice(1, 3); // Start from index 1 and Remove 2 items
+console.log(items2); // [ 'a', 'e' ]
 
 //Add elements
 let numbers = [1, 2, 5];
