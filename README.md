@@ -233,8 +233,9 @@ The method takes three main parts:
 
 ```jsx
 //Remove elements
+//splice(startIndex, deleteCount, newItems) Note: Third parameter is optional
 let fruits = ["apple", "banana", "cherry", "mango"];
-fruits.splice(1, 2);
+fruits.splice(1, 2); // Start from index 1 and Remove 2 items
 console.log(fruits);
 // ["apple", "mango"]
 
@@ -245,12 +246,14 @@ console.log(numbers);
 // [1, 2, 3, 4, 5]
 
 //Replace elements
+//splice(startIndex, deleteCount, newItems)
 let colors = ["red", "green", "blue"];
 colors.splice(1, 1, "yellow");
 console.log(colors);
 // ["red", "yellow", "blue"]
 
 //Remove from middle and insert
+//splice(startIndex, deleteCount, newItems)
 let arr = ["a", "b", "c", "d"];
 arr.splice(1, 2, "x", "y");
 console.log(arr);
