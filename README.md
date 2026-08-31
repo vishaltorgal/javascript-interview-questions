@@ -566,9 +566,9 @@ user.greet();
 ```
 ## 12. **Event Loop**
 
-Event loop enables asynchronous programming by handling tasks efficiently.
-
 Since JavaScript is single-threaded, it uses the event loop to manage the execution of multiple tasks without blocking the main thread.
+
+The Event Loop allows JavaScript to handle asynchronous operations. It continuously checks whether the call stack is empty and then moves callbacks from the queues to the call stack for execution. Microtasks like Promises are processed before macrotasks like setTimeout.
 
 <img width="800" height="401" alt="image" src="https://github.com/user-attachments/assets/4d4a06e3-7f18-4aa9-9517-ca04416bdd67" />
 
