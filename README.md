@@ -1,4 +1,4 @@
-# JavaScript Interview Questions (2025–2026)
+f# JavaScript Interview Questions (2025–2026)
 
 ### Table of Contents
 1. [Is JavaScript Object-Oriented?](#1-is-javascript-object-oriented)
@@ -566,7 +566,7 @@ user.greet();
 ```
 ## 12. **Event Loop**
 
-The event loop is an important concept in JavaScript that enables asynchronous programming by handling tasks efficiently.
+Event loop enables asynchronous programming by handling tasks efficiently.
 
 Since JavaScript is single-threaded, it uses the event loop to manage the execution of multiple tasks without blocking the main thread.
 
